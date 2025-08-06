@@ -21,8 +21,15 @@ public class Payment {
     @Column(nullable = false)
     private Double amount;
 
-
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 
+    private String paymentId;
+
+    // ✅ New Fields
+    @Column(nullable = false)
+    private Long ownerId;
+
+    @Column(nullable = false)
+    private Long vehicleId;
 }
