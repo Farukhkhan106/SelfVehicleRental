@@ -1,6 +1,7 @@
 package com.vehicalrentelsystem.vehicalrentalsystem.service;
 
 import com.google.gson.Gson;
+import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingAfterPaymentDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.dto.MyBookingDetailDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.model.Booking;
@@ -27,7 +28,7 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final VehicleRepository vehicleRepository;
     private final UserRepository userRepository;
-
+    private final PaymentService paymentService;
     public Booking createBooking(BookingDTO bookingDTO, Authentication authentication) {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email)
@@ -155,4 +156,30 @@ public class BookingService {
 
         return dto;
     }
+    public BookingDTO createBookingAfterPayment(BookingAfterPaymentDTO dto) {
+        boolean isValid = paymentService.verifySignature(dto.getOrderId(), dto.getPaymentId(), dto.getSignature());
+        if (!isValid) {
+            throw new RuntimeException("Invalid Razorpay signature");
+        }
+
+        User user = userRepository.findById(dto.getUserId()).orElseThrow();
+        Vehicle vehicle = vehicleRepository.findById(dto.getVehicleId()).orElseThrow();
+
+        Booking booking = new Booking();
+        booking.setUser(user);
+        booking.setVehicle(vehicle);
+        booking.setStartDate(dto.getStartDate());
+        booking.setEndDate(dto.getEndDate());
+        booking.setTotalAmount(dto.getAmount());
+        booking.setStatus(BookingStatus.CONFIRMED);
+        booking.setOwnerId(vehicle.getOwnerId()
+        );
+
+        bookingRepository.save(booking);
+
+        paymentService.updatePaymentStatus(dto.getPaymentIdInDb(), dto.getPaymentId(), dto.getSignature());
+
+        return mapToDTO(booking);
+    }
+
 }

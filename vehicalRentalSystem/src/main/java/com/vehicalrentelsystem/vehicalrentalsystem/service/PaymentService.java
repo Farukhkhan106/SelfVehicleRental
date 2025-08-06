@@ -10,6 +10,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
+
 @Service
 public class PaymentService {
 
@@ -44,6 +48,9 @@ public class PaymentService {
         payment.setAmount(dto.getAmount());
         payment.setBookingId(dto.getBookingId());
         payment.setStatus(PaymentStatus.PENDING);
+        payment.setOwnerId(dto.getOwnerId());
+        payment.setVehicleId(dto.getVehicleId());
+
         paymentRepository.save(payment);
 
         dto.setId(payment.getId());
@@ -54,15 +61,18 @@ public class PaymentService {
         Payment payment = paymentRepository.findById(paymentId)
                 .orElseThrow(() -> new RuntimeException("Payment not found"));
 
-        return new PaymentDTO(
-                payment.getId(),
-                payment.getBookingId(),
-                payment.getAmount(),
-                payment.getStatus().name(),
-                null,
-                null,
-                null
-        );
+        PaymentDTO dto = new PaymentDTO();
+        dto.setId(payment.getId());
+        dto.setBookingId(payment.getBookingId());
+        dto.setAmount(payment.getAmount());
+        dto.setStatus(payment.getStatus().name());
+        dto.setPaymentId(payment.getPaymentId());
+        dto.setOrderId(null); // if needed
+        dto.setRazorpaySignature(null); // if needed
+        dto.setOwnerId(payment.getOwnerId());
+        dto.setVehicleId(payment.getVehicleId());
+
+        return dto;
     }
 
     public void updatePaymentStatus(Long paymentId, String razorpayPaymentId, String signature) {
@@ -70,6 +80,31 @@ public class PaymentService {
                 .orElseThrow(() -> new RuntimeException("Payment not found"));
 
         payment.setStatus(PaymentStatus.SUCCESS);
+        payment.setPaymentId(razorpayPaymentId);
+        // Optionally save signature somewhere
         paymentRepository.save(payment);
     }
+    public boolean verifySignature(String orderId, String paymentId, String razorpaySignature) {
+        try {
+            String payload = orderId + "|" + paymentId;
+            Mac mac = Mac.getInstance("HmacSHA256");
+            mac.init(new SecretKeySpec(razorpaySecret.getBytes(), "HmacSHA256"));
+            byte[] digest = mac.doFinal(payload.getBytes());
+
+            String generatedSignature = bytesToHex(digest);  // Hex instead of Base64
+            return generatedSignature.equals(razorpaySignature);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b)); // lower-case hex
+        }
+        return sb.toString();
+    }
+
 }
