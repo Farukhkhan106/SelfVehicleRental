@@ -1,17 +1,22 @@
 package com.vehicalrentelsystem.vehicalrentalsystem.controller;
 
+import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingAfterPaymentDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.dto.MyBookingDetailDTO;
 import com.vehicalrentelsystem.vehicalrentalsystem.model.Booking;
 import com.vehicalrentelsystem.vehicalrentalsystem.service.BookingService;
+import com.vehicalrentelsystem.vehicalrentalsystem.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.*;
+
+import static com.razorpay.Utils.verifySignature;
 
 @RestController
 @RequestMapping("/booking")
@@ -19,6 +24,7 @@ import java.util.*;
 public class BookingController {
 
     private final BookingService bookingService;
+    private final PaymentService paymentService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createBooking(@RequestBody BookingDTO bookingDTO, Authentication authentication) {
@@ -33,6 +39,24 @@ public class BookingController {
             return ResponseEntity.badRequest().body(Map.of(
                     "message", e.getMessage()
             ));
+        }
+    }
+
+    @PostMapping("/create-after-payment")
+    public ResponseEntity<?> createBookingAfterPayment(@RequestBody BookingAfterPaymentDTO dto) {
+        // 1. Verify Razorpay Signature
+        boolean isValid = paymentService.verifySignature(dto.getOrderId(), dto.getPaymentId(), dto.getSignature());
+
+        if (!isValid) {
+            return ResponseEntity.badRequest().body(Map.of("message", "Invalid Razorpay signature."));
+        }
+
+        try {
+            BookingDTO booking = bookingService.createBookingAfterPayment(dto);
+            return ResponseEntity.ok(booking);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(Map.of("message", "Booking failed after payment."));
         }
     }
 

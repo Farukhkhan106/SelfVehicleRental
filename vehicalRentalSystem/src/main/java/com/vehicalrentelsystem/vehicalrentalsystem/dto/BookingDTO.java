@@ -14,6 +14,6 @@ public class BookingDTO {
     private LocalDate endDate;
     private String status;
 
-    // ✅ Add this
+
     private Double totalAmount;
 }
