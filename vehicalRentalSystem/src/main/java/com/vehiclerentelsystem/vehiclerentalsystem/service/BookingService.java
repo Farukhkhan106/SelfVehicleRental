@@ -140,10 +140,12 @@ public class BookingService {
             dto.setNumber(v.getNumberPlate());
             dto.setPricePerDay(v.getPricePerDay().doubleValue());
 
+            // ✅ Set all images
             if (v.getPhotosJson() != null) {
                 String[] images = new Gson().fromJson(v.getPhotosJson(), String[].class);
                 if (images != null && images.length > 0) {
-                    dto.setImage(images[0]);
+                    dto.setImage(images[0]); // First image
+                    dto.setImages(java.util.Arrays.asList(images)); // All images
                 }
             }
 
@@ -156,6 +158,7 @@ public class BookingService {
 
         return dto;
     }
+
     public BookingDTO createBookingAfterPayment(BookingAfterPaymentDTO dto) {
         boolean isValid = paymentService.verifySignature(dto.getOrderId(), dto.getPaymentId(), dto.getSignature());
         if (!isValid) {
@@ -181,5 +184,6 @@ public class BookingService {
 
         return mapToDTO(booking);
     }
+
 
 }

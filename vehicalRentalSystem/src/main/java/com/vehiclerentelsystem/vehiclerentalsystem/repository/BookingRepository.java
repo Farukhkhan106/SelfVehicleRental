@@ -12,6 +12,7 @@ import java.util.Optional;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
+
     /**
      * Get all bookings by user ID.
      */
@@ -49,5 +50,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
             @Param("ownerId") Long ownerId,
             @Param("status") BookingStatus status
     );
+
 
 }

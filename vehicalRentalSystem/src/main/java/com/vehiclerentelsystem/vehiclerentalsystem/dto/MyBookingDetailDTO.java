@@ -1,7 +1,9 @@
 package com.vehiclerentelsystem.vehiclerentalsystem.dto;
 
 import lombok.Data;
+
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class MyBookingDetailDTO {
@@ -15,7 +17,8 @@ public class MyBookingDetailDTO {
     private String brand;
     private String model;
     private String number;
-    private String image;
+    private String image; // Single (first) image
+    private List<String> images; // ✅ List of all vehicle images
     private double pricePerDay;
 
     // Owner Info
