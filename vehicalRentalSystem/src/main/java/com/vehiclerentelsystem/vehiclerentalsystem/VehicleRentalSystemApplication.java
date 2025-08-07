@@ -1,13 +1,13 @@
-package com.vehicalrentelsystem.vehicalrentalsystem;
+package com.vehiclerentelsystem.vehiclerentalsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VehicalRentalSystemApplication {
+public class VehicleRentalSystemApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(VehicalRentalSystemApplication.class, args);
+        SpringApplication.run(VehicleRentalSystemApplication.class, args);
     }
 
 }
