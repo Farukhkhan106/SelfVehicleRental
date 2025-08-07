@@ -1,9 +1,9 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.UserDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.security.JwtUtil;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.UserService;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.UserDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.security.JwtUtil;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

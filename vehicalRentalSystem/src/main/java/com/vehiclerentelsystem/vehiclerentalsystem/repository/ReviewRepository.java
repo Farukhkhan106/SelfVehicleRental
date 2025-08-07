@@ -1,6 +1,6 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.repository;
+package com.vehiclerentelsystem.vehiclerentalsystem.repository;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Review;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

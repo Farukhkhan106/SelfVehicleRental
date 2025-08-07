@@ -1,4 +1,4 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.model;
+package com.vehiclerentelsystem.vehiclerentalsystem.model;
 
 public enum BookingStatus {
     AVAILABLE,

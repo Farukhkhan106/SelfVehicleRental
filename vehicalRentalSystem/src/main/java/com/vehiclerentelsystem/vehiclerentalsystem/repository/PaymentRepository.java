@@ -1,6 +1,6 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.repository;
+package com.vehiclerentelsystem.vehiclerentalsystem.repository;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Payment;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

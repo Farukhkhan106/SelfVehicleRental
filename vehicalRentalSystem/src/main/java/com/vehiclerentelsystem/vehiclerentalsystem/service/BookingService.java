@@ -1,16 +1,16 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
 import com.google.gson.Gson;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingAfterPaymentDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.MyBookingDetailDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Booking;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.BookingStatus;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Vehicle;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.BookingRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.VehicleRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.BookingAfterPaymentDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.BookingDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.MyBookingDetailDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Booking;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.BookingStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.BookingRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

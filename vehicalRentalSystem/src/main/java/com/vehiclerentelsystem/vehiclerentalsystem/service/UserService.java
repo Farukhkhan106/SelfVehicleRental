@@ -1,12 +1,10 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {

@@ -1,14 +1,14 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.UserDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.VehicleDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Role;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Vehicle;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.VehicleStatus;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.VehicleRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.UserDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.VehicleDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Role;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.VehicleStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

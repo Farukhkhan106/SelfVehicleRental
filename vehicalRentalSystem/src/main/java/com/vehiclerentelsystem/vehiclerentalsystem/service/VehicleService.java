@@ -1,13 +1,17 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.VehicleDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.*;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.BookingRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.ReviewRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.VehicleRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.VehicleDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.*;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Role;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.VehicleStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.BookingRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.ReviewRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

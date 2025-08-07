@@ -1,4 +1,4 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

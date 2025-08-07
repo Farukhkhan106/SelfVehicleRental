@@ -1,10 +1,10 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.UserDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Role;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.security.JwtUtil;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.UserDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Role;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.security.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;

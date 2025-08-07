@@ -1,18 +1,17 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.PaymentDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Payment;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.PaymentStatus;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.PaymentRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.PaymentDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Payment;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.PaymentStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.PaymentRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
 
 @Service
 public class PaymentService {

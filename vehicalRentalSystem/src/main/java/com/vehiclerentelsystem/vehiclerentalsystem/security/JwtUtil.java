@@ -1,6 +1,6 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.security;
+package com.vehiclerentelsystem.vehiclerentalsystem.security;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;

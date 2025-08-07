@@ -1,4 +1,4 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.dto;
+package com.vehiclerentelsystem.vehiclerentalsystem.dto;
 
 import lombok.*;
 import java.time.LocalDate;

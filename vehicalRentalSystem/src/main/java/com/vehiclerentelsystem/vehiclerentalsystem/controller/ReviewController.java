@@ -1,7 +1,7 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.ReviewDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.ReviewService;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.ReviewDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.ReviewService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

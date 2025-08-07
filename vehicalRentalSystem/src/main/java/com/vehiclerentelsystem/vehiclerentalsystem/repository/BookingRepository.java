@@ -1,7 +1,7 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.repository;
+package com.vehiclerentelsystem.vehiclerentalsystem.repository;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Booking;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.BookingStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Booking;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.BookingStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

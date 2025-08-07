@@ -3,7 +3,7 @@ package com.vehiclerentelsystem.vehiclerentalsystem.dto;
 import lombok.Data;
 
 @Data
-public class OwnerDTO {
+public class OwnerDetailsDTO {
     // 🔹 User table fields
     private String name;
     private String phone;

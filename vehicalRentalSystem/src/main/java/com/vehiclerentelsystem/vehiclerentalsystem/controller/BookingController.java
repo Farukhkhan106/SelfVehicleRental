@@ -1,22 +1,19 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingAfterPaymentDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.BookingDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.MyBookingDetailDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Booking;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.BookingService;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.PaymentService;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.BookingAfterPaymentDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.BookingDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.MyBookingDetailDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Booking;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.BookingService;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.*;
-
-import static com.razorpay.Utils.verifySignature;
 
 @RestController
 @RequestMapping("/booking")

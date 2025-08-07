@@ -1,7 +1,7 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.PaymentDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.PaymentService;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.PaymentDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.PaymentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

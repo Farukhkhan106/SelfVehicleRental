@@ -1,12 +1,12 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.service;
+package com.vehiclerentelsystem.vehiclerentalsystem.service;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.ReviewDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Review;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Vehicle;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.ReviewRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.UserRepository;
-import com.vehicalrentelsystem.vehicalrentalsystem.repository.VehicleRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.ReviewDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Review;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.ReviewRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

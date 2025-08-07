@@ -1,6 +1,6 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.security;
+package com.vehiclerentelsystem.vehiclerentalsystem.security;
 
-import com.vehicalrentelsystem.vehicalrentalsystem.service.AuthService;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.AuthService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;

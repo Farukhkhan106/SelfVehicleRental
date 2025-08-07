@@ -1,9 +1,9 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.VehicleDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.Vehicle;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.VehicleService;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.VehicleDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

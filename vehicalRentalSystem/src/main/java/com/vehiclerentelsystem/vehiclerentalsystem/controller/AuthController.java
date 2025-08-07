@@ -1,12 +1,10 @@
-package com.vehicalrentelsystem.vehicalrentalsystem.controller;
-import com.vehicalrentelsystem.vehicalrentalsystem.dto.UserDTO;
-import com.vehicalrentelsystem.vehicalrentalsystem.model.User;
-import com.vehicalrentelsystem.vehicalrentalsystem.security.JwtUtil;
-import com.vehicalrentelsystem.vehicalrentalsystem.service.AuthService;
+package com.vehiclerentelsystem.vehiclerentalsystem.controller;
+import com.vehiclerentelsystem.vehiclerentalsystem.dto.UserDTO;
+import com.vehiclerentelsystem.vehiclerentalsystem.security.JwtUtil;
+import com.vehiclerentelsystem.vehiclerentalsystem.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("/auth")
