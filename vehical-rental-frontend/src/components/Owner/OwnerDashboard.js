@@ -1,59 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api } from '../../axiosConfig';
-import OwnerNavbar from '../../components/Common/OwnerNavbar';
-import '../UserDashboard.css'; // Styling reuse from user dashboard
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../axiosConfig";
+import OwnerNavbar from "../../components/Common/OwnerNavbar";
+import OwnerCardView from "../../components/Common/OwnerCardView";
+import "../UserDashboard.css";
 
 const OwnerDashboard = () => {
   const [vehicles, setVehicles] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [priceFilter, setPriceFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [priceFilter, setPriceFilter] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchMyVehicles = async () => {
-        try {
-          const response = await api.get('/vehicle/my-vehicles', {
-            withCredentials: true
-          });
-          setVehicles(response.data);
-          setFilteredVehicles(response.data);
-        } catch (err) {
-          setError('Failed to fetch your vehicles.');
-          console.error(err);
-        } finally {
-          setLoading(false);
-        }
-      };
-      
-
     fetchMyVehicles();
   }, []);
+
+  const fetchMyVehicles = async () => {
+    try {
+      const response = await api.get("/vehicle/my-vehicles", {
+        withCredentials: true,
+      });
+      setVehicles(response.data);
+      setFilteredVehicles(response.data);
+    } catch (err) {
+      setError("Failed to fetch your vehicles.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     let filtered = vehicles;
 
     if (searchTerm) {
-      filtered = filtered.filter(vehicle =>
-        (vehicle.brand && vehicle.brand.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (vehicle.model && vehicle.model.toLowerCase().includes(searchTerm.toLowerCase()))
+      filtered = filtered.filter(
+        (vehicle) =>
+          (vehicle.brand &&
+            vehicle.brand.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (vehicle.model &&
+            vehicle.model.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 
     if (priceFilter) {
-      filtered = filtered.filter(vehicle => {
-        if (priceFilter === 'low') return vehicle.pricePerDay <= 1000;
-        if (priceFilter === 'medium') return vehicle.pricePerDay > 1000 && vehicle.pricePerDay <= 5000;
-        if (priceFilter === 'high') return vehicle.pricePerDay > 5000;
+      filtered = filtered.filter((vehicle) => {
+        if (priceFilter === "low") return vehicle.pricePerDay <= 1000;
+        if (priceFilter === "medium")
+          return vehicle.pricePerDay > 1000 && vehicle.pricePerDay <= 5000;
+        if (priceFilter === "high") return vehicle.pricePerDay > 5000;
         return true;
       });
     }
 
     setFilteredVehicles(filtered);
   }, [searchTerm, priceFilter, vehicles]);
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this vehicle?")) {
+      try {
+        await api.delete(`/vehicle/owner/${id}`, { withCredentials: true });
+        setVehicles((prev) => prev.filter((v) => v.id !== id));
+      } catch (err) {
+        console.error("Delete failed", err);
+        alert("Failed to delete vehicle");
+      }
+    }
+  };
 
   return (
     <div className="dashboard-container">
@@ -68,7 +84,6 @@ const OwnerDashboard = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
-
         <select
           value={priceFilter}
           onChange={(e) => setPriceFilter(e.target.value)}
@@ -88,26 +103,12 @@ const OwnerDashboard = () => {
       )}
 
       <div className="vehicle-grid">
-        {filteredVehicles.map(vehicle => (
-          <div
+        {filteredVehicles.map((vehicle) => (
+          <OwnerCardView
             key={vehicle.id}
-            className="vehicle-card"
-            onClick={() => navigate(`/owner/vehicle/${vehicle.id}`)}
-            style={{ cursor: 'pointer' }}
-          >
-            <img
-              src={vehicle.photoUrls?.length > 0 ? `http://localhost:8080${vehicle.photoUrls[0]}` : '/placeholder.jpg'}
-              alt={`${vehicle.brand} ${vehicle.model}`}
-              className="vehicle-image"
-              onError={(e) => (e.target.src = '/placeholder.jpg')}
-            />
-            <div className="vehicle-info">
-              <h3 className="vehicle-name">{vehicle.brand} {vehicle.model}</h3>
-              <p className="vehicle-price">💰 ₹{vehicle.pricePerDay}/day</p>
-              <p className="vehicle-location">📍 {vehicle.ownerCity}</p>
-              <p className="click-msg">Click for more info</p>
-            </div>
-          </div>
+            vehicle={vehicle}
+            onDelete={handleDelete}
+          />
         ))}
       </div>
     </div>
