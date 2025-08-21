@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api } from '../../axiosConfig';
-import AdminNavbar from '../../components/Common/AdminNavbar';
-import '../AdminNavbar.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../axiosConfig";
+import AdminNavbar from "../../components/Common/AdminNavbar";
+import "../AdminNavbar.css";
 
 const AdminDashboard = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -11,10 +11,10 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await api.get('/vehicles');
+        const response = await api.get("/vehicles");
         setVehicles(response.data);
       } catch (error) {
-        console.error('Error fetching vehicles:', error);
+        console.error("Error fetching vehicles:", error);
       }
     };
 

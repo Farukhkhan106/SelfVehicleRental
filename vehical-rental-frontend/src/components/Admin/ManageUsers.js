@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { api } from '../../axiosConfig';
-import '../ManageUser.css';
+import React, { useEffect, useState } from "react";
+import { api } from "../../axiosConfig";
+import "../ManageUser.css";
 
 const ManageUser = () => {
   const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,31 +13,32 @@ const ManageUser = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await api.get('/admin/users');
+      const response = await api.get("/admin/users");
       setUsers(response.data);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error("Error fetching users:", error);
     } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = async (userId) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
       try {
         await api.delete(`/admin/users/${userId}`);
-        alert('User deleted successfully');
+        alert("User deleted successfully");
         fetchUsers();
       } catch (error) {
-        console.error('Error deleting user:', error);
+        console.error("Error deleting user:", error);
       }
     }
   };
 
   // Fixing the null error by adding safe optional chaining
-  const filteredUsers = users.filter(user =>
-    (user?.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user?.name?.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredUsers = users.filter(
+    (user) =>
+      user?.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user?.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -68,11 +69,11 @@ const ManageUser = () => {
           </thead>
           <tbody>
             {filteredUsers.length > 0 ? (
-              filteredUsers.map(user => (
+              filteredUsers.map((user) => (
                 <tr key={user.id} className="text-center">
-                  <td className="p-3 border">{user?.name || 'N/A'}</td>
-                  <td className="p-3 border">{user?.email || 'N/A'}</td>
-                  <td className="p-3 border">{user?.role || 'N/A'}</td>
+                  <td className="p-3 border">{user?.name || "N/A"}</td>
+                  <td className="p-3 border">{user?.email || "N/A"}</td>
+                  <td className="p-3 border">{user?.role || "N/A"}</td>
                   <td className="p-3 border">
                     <button
                       onClick={() => handleDelete(user.id)}
@@ -85,7 +86,9 @@ const ManageUser = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="p-3">No users found.</td>
+                <td colSpan="4" className="p-3">
+                  No users found.
+                </td>
               </tr>
             )}
           </tbody>

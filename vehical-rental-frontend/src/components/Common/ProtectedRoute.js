@@ -1,11 +1,11 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React from "react";
+import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ role, children }) => {
-  const userRole = localStorage.getItem('role');
+  const userRole = localStorage.getItem("role");
 
   if (!userRole || userRole !== role) {
-    alert('Invalid role!');
+    alert("Invalid role!");
     return <Navigate to="/login" />;
   }
 
