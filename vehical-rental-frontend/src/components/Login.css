@@ -1,7 +1,17 @@
 .login-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* padding for small screen side spacing */
+}
+
+.login-form {
   width: 100%;
   max-width: 400px;
-  margin: 100px auto;
+  margin: 40px auto;
+  /* add top margin for spacing from navbar */
   padding: 40px;
   background-color: #fff;
   border-radius: 8px;
@@ -37,4 +47,23 @@
 
 .login-button:hover {
   background-color: #218838;
+}
+
+/* ✅ Mobile styles */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 20px;
+    /* reduce padding on small devices */
+    margin: 20px auto;
+  }
+
+  .login-input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,136 @@
+/* Wrapper */
+.booking-mgmt-wrapper {
+  padding-top: 80px;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.booking-mgmt-container {
+  width: 100%;
+  max-width: 1300px;
+  padding: 30px 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Title */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Tabs */
+.booking-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.booking-tabs button {
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  background-color: #f1f1f1;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.booking-tabs button:hover {
+  background-color: #e2e6ea;
+}
+
+.booking-tabs button.active {
+  background: linear-gradient(to right, #007bff, #00bfff);
+  color: white;
+  border-color: #007bff;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Status messages */
+.status-message {
+  font-weight: 600;
+  color: #28a745;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Booking Cards */
+.booking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.booking-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px);
+}
+
+.booking-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.status-badge.booked { background-color: #007bff; }
+.status-badge.pending { background-color: #ffc107; color: #212529; }
+.status-badge.canceled { background-color: #dc3545; }
+.status-badge.available { background-color: #28a745; }
+
+/* Cancel Button */
+.cancel-btn {
+  align-self: flex-start;
+  padding: 10px 16px;
+  background: linear-gradient(to right, #ff4e50, #f36d64);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(to right, #e60023, #f75a4f);
+}
+
+/* Loading & Empty State */
+.loading-text,
+.no-data {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 40px;
+}
