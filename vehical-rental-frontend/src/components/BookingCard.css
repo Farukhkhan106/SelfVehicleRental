@@ -1,0 +1,128 @@
+.bc-card {
+  display: flex;
+  align-items: center;  /* ✅ Vertically center everything */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  gap: 20px;
+  margin-bottom: 20px;
+  max-width: 850px;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.bc-card:hover {
+  transform: scale(1.01);
+}
+
+.bc-image-section {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bc-vehicle-image {
+  width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.bc-details-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.bc-vehicle-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.bc-status {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.bc-status.confirmed {
+  color: #28a745;
+}
+
+.bc-status.canceled {
+  color: #dc3545;
+}
+
+.bc-status.completed {
+  color: #007bff;
+}
+
+.bc-actions-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.bc-cancel-btn,
+.bc-delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bc-cancel-btn {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.bc-cancel-btn:hover {
+  background-color: #e0a800;
+}
+
+.bc-delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.bc-delete-btn:hover {
+  background-color: #c82333;
+}
+
+@media screen and (max-width: 600px) {
+  .bc-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bc-image-section {
+    justify-content: center;
+  }
+
+  .bc-actions-section {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bc-vehicle-image {
+    width: 180px;
+    height: 120px;
+  }
+}

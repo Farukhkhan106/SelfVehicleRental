@@ -1,0 +1,178 @@
+/* Overall scrollable form window */
+.upload-vehicle-wrapper {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f0f2f5;
+}
+
+/* Container for the upload vehicle form */
+.upload-vehicle-container {
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Title styling */
+.upload-vehicle-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+/* Form block styling */
+.form-block {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fafafa;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Block title */
+.form-block h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input, textarea, select, and button styling */
+input,
+textarea,
+select,
+button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Fieldset styling */
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Legend styling */
+legend {
+  font-weight: bold;
+  padding: 0 5px;
+  color: #333;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Message styling */
+.message {
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .upload-vehicle-container {
+    padding: 20px;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .form-block {
+    padding: 15px;
+  }
+}
+
+/* File input styling */
+input[type="file"] {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+input[type="file"]:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Feature group styling */
+.feature-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feature-group label {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.feature-group label:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  accent-color: #38bdf8;
+}

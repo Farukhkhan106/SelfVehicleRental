@@ -1,0 +1,127 @@
+/* General Styling */
+.dashboard-container {
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Filter Section */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 2rem;
+}
+
+.search-input,
+.filter-dropdown {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  width: 220px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus,
+.filter-dropdown:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+/* Vehicle Grid */
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Messages */
+.loading-text,
+.error-text,
+.no-vehicles {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #475569;
+  margin: 2rem 0;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-text {
+  color: #dc2626;
+}
+
+.no-vehicles {
+  color: #64748b;
+}
+
+/* Navbar */
+nav,
+.user-navbar {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 1.5rem;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .filter-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-input,
+  .filter-dropdown {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .search-input,
+  .filter-dropdown {
+    width: 100%;
+  }
+
+  .dashboard-title {
+    font-size: 2rem;
+  }
+}

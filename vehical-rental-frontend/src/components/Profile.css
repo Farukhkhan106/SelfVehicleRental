@@ -1,0 +1,102 @@
+.profile-advanced-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.left-panel {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f8f8;
+}
+
+.right-panel {
+  flex: 2;
+}
+
+.stats-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  background: #e0f0ff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.3s;
+}
+.stat:hover {
+  background: #cbe7ff;
+}
+
+.stat-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.advanced-form {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+.input-group {
+  margin-bottom: 10px;
+}
+.input-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #555;
+}
+.input-group input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.btn:disabled {
+  background: #7abaff;
+  cursor: not-allowed;
+}
+.btn:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #007700;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.loading {
+  font-size: 16px;
+}
