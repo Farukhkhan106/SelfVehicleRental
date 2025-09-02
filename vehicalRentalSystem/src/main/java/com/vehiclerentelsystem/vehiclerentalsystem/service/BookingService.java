@@ -12,8 +12,10 @@ import com.vehiclerentelsystem.vehiclerentalsystem.repository.BookingRepository;
 import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
 import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.core.Authentication;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -29,6 +31,7 @@ public class BookingService {
     private final VehicleRepository vehicleRepository;
     private final UserRepository userRepository;
     private final PaymentService paymentService;
+
     public Booking createBooking(BookingDTO bookingDTO, Authentication authentication) {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email)
@@ -111,7 +114,6 @@ public class BookingService {
                 .collect(Collectors.toList());
     }
 
-
     private BookingDTO mapToDTO(Booking booking) {
         return new BookingDTO(
                 booking.getId(),
@@ -140,12 +142,11 @@ public class BookingService {
             dto.setNumber(v.getNumberPlate());
             dto.setPricePerDay(v.getPricePerDay().doubleValue());
 
-            // ✅ Set all images
             if (v.getPhotosJson() != null) {
                 String[] images = new Gson().fromJson(v.getPhotosJson(), String[].class);
                 if (images != null && images.length > 0) {
-                    dto.setImage(images[0]); // First image
-                    dto.setImages(java.util.Arrays.asList(images)); // All images
+                    dto.setImage(images[0]);
+                    dto.setImages(java.util.Arrays.asList(images));
                 }
             }
 
@@ -175,8 +176,7 @@ public class BookingService {
         booking.setEndDate(dto.getEndDate());
         booking.setTotalAmount(dto.getAmount());
         booking.setStatus(BookingStatus.CONFIRMED);
-        booking.setOwnerId(vehicle.getOwnerId()
-        );
+        booking.setOwnerId(vehicle.getOwnerId());
 
         bookingRepository.save(booking);
 
@@ -185,5 +185,13 @@ public class BookingService {
         return mapToDTO(booking);
     }
 
-
+    /**
+     * ✅ Auto-update bookings daily at midnight
+     */
+    @Transactional
+    @Scheduled(cron = "0 0 0 * * ?") // runs daily at midnight
+    public void autoCompleteExpiredBookings() {
+        bookingRepository.markExpiredBookingsAsCompleted(LocalDate.now());
+        System.out.println("✅ Expired bookings updated at " + LocalDate.now());
+    }
 }

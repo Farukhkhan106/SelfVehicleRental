@@ -9,9 +9,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Serve files from the uploads directory
+        // Serve images from F:/springBoot/uploads/ via URL /uploads/**
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:///F:/springBoot/uploads/") // Ensure 3 slashes
-                .setCachePeriod(3600); // Cache for 1 hour
+                .addResourceLocations("file:///F:/springBoot/uploads/") // make sure 3 slashes
+                .setCachePeriod(3600);
     }
 }

@@ -62,7 +62,7 @@ public class SecurityConfig {
                         .requestMatchers("/vehicle/details/**").permitAll()
                         .requestMatchers("/payment/**").permitAll()
                         .requestMatchers("/booking/check-availability").permitAll()
-
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/vehicle/my-vehicles").hasAuthority("ROLE_OWNER")
                         .requestMatchers("/vehicle/update-status/**").hasAuthority("ROLE_OWNER")
                         .requestMatchers("/vehicle/add").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER", "ROLE_OWNER")

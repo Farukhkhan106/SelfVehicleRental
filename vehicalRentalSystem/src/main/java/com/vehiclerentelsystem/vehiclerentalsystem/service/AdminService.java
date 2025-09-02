@@ -7,13 +7,16 @@ import com.vehiclerentelsystem.vehiclerentalsystem.model.Role;
 import com.vehiclerentelsystem.vehiclerentalsystem.model.User;
 import com.vehiclerentelsystem.vehiclerentalsystem.model.Vehicle;
 import com.vehiclerentelsystem.vehiclerentalsystem.model.VehicleStatus;
+import com.vehiclerentelsystem.vehiclerentalsystem.repository.BookingRepository;
 import com.vehiclerentelsystem.vehiclerentalsystem.repository.UserRepository;
 import com.vehiclerentelsystem.vehiclerentalsystem.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,6 +24,8 @@ public class AdminService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BookingRepository bookingRepository;
 
     private final VehicleRepository vehicleRepository;
     private final ObjectMapper objectMapper;
@@ -93,4 +98,39 @@ public class AdminService {
 
         vehicleRepository.save(vehicle);
     }
+    // ✅ Delete Vehicle
+    public void deleteVehicle(Long id) {
+        if (!vehicleRepository.existsById(id)) {
+            throw new RuntimeException("Vehicle not found with ID: " + id);
+        }
+        vehicleRepository.deleteById(id);
+    }
+
+    // ✅ Update Vehicle Status
+    public void updateVehicleStatus(Long id, String status) {
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found with ID: " + id));
+
+        try {
+            vehicle.setStatus(VehicleStatus.valueOf(status.toUpperCase()));
+            vehicleRepository.save(vehicle);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid status. Allowed: AVAILABLE, BOOKED, APPROVED, REJECTED");
+        }
+    }
+
+    // ✅ System Stats (Users + Vehicles)
+    public Map<String, Object> getAdminStats() {
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("totalUsers", userRepository.count());
+        stats.put("totalVehicles", vehicleRepository.count());
+        stats.put("totalBookings", bookingRepository.count());
+
+        Double totalRevenue = bookingRepository.getTotalRevenue();
+        stats.put("totalRevenue", totalRevenue != null ? totalRevenue : 0.0);
+
+        return stats;
+    }
+
+
 }
