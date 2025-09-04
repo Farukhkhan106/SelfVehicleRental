@@ -111,4 +111,4 @@ Build Tools: Maven, npm
 
 👨‍💻 Authors
 
-Your Name – Full Stack Developer
+Farukh Khan, Ansh Rathore
